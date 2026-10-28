@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using SmartRecruitment.Application.Interfaces;
 using SmartRecruitment.Application.UseCases.Candidate.ChangeCandidateStatus;
 using SmartRecruitment.Application.UseCases.Candidate.CreateCandidate;
@@ -6,7 +6,6 @@ using SmartRecruitment.Application.UseCases.Company.ApproveCompany;
 using SmartRecruitment.Application.UseCases.Company.RegisterCompany;
 using SmartRecruitment.Application.UseCases.Company.RejectCompany;
 using SmartRecruitment.Application.UseCases.CV.FinalizeCV;
-using SmartRecruitment.Application.UseCases.CV.GenerateCV;
 using SmartRecruitment.Application.UseCases.CV.UpdateCVContent;
 using SmartRecruitment.Application.UseCases.CV.UploadCV;
 using SmartRecruitment.Application.UseCases.Interview.CancelInterview;
@@ -65,10 +64,8 @@ builder.Services.AddScoped<CancelInterviewHandler>();
 
 builder.Services.AddScoped<IEmbeddingService, FakeEmbeddingService>();
 builder.Services.AddScoped<ICVTextExtractor, FakeCVTextExtractor>();
-builder.Services.AddScoped<ICVContentGenerator, FakeCVContentGenerator>();
 
 builder.Services.AddScoped<UploadCVHandler>();
-builder.Services.AddScoped<GenerateCVHandler>();
 builder.Services.AddScoped<UpdateCVContentHandler>();
 builder.Services.AddScoped<FinalizeCVHandler>();
 
