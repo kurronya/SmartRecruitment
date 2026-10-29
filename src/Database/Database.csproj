@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <UserSecretsId>a24cf14a-63f8-4e2a-b024-4d254b64b9dc</UserSecretsId>
+  </PropertyGroup>
+
+  <!-- Single source of truth: entities and EF configurations stay inside the services that own them
+       and are linked here (not copied), so this project can build the full schema. -->
+  <ItemGroup>
+    <Compile Include="..\Services\Candidate\Domain\**\*.cs" LinkBase="Linked\Candidate\Domain" />
+    <Compile Include="..\Services\Candidate\Infrastructure\Persistence\Configurations\*.cs" LinkBase="Linked\Candidate\Configurations" />
+    <Compile Include="..\Services\Company\Domain\**\*.cs" LinkBase="Linked\Company\Domain" />
+    <Compile Include="..\Services\Company\Infrastructure\Persistence\Configurations\*.cs" LinkBase="Linked\Company\Configurations" />
+    <Compile Include="..\Services\CV\Domain\**\*.cs" LinkBase="Linked\CV\Domain" />
+    <Compile Include="..\Services\CV\Infrastructure\Persistence\Configurations\*.cs" LinkBase="Linked\CV\Configurations" />
+    <Compile Include="..\Services\Recruitment\Domain\**\*.cs" LinkBase="Linked\Recruitment\Domain" />
+    <Compile Include="..\Services\Recruitment\Infrastructure\Persistence\Configurations\*.cs" LinkBase="Linked\Recruitment\Configurations" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="8.0.0" />
+  </ItemGroup>
+
+</Project>
